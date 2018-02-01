@@ -1,4 +1,4 @@
-# ChromeExcelGenerator
+# chrome-excel-generator
 Chrome Extension for creating Excel Spreadsheets from HTML Tables.  Uses the js-excel-generator library to create the spreadsheet.
 
 Protoype code for a Chrome Extension which generates Excel Spread Sheets from HTML Tables.  Code only functions during very basic conditions.  A table interpreter will be added to make it more robust.  A release will follow.
