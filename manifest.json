@@ -1,0 +1,27 @@
+{
+    "name": "Excel Generator",
+    "description": "Generates Excel Spreadsheets from HTML Tables",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "background": {
+        "scripts": ["/scripts/background.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [ "<all_urls>" ],
+            "js": ["/scripts/external/jquery-1.8.2.js", "/scripts/content.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "browser_action": {
+        "default_title": "Generate Excel",
+        "default_icon": "/images/excelgen.png",
+        "default_popup": "/views/index.html"
+    },
+    "manifest_version": 2
+}

@@ -1,0 +1,7 @@
+/* CSS file placeholder. */
+li {
+    cursor: pointer;
+}
+li:hover {
+    background-color: yellow;
+}
