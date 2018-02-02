@@ -1,79 +1,56 @@
-
-document.addEventListener('DOMContentLoaded', function () {
-
-});
-
-// Update the relevant fields with the new data
-function setTableInfo(info) {
-  if (info && info.tables && info.tables.length) {
-    var arr = [];
-    arr.push("<ul>");
-    info.tables.forEach(v => {
-      arr.push("<li>");
-      arr.push(v.name);
-      arr.push("</li>");
-    });
-    arr.push("</ul>");
-    $("#content").html(arr.join(""));
-    $("#content ul li").hover(
-      function(){
-        highlightTable($(this).text(), "on");
-      },
-      function(){
-        highlightTable($(this).text(), "off");
-      }
-    );
-    $("#content ul li").click(function () {
-      var tbl_name = $(this).text();
-      var tbl = info.tables.find((itm) => itm.name == tbl_name);
-      var tbl2Exprt = $(tbl.html);
-      var isTbl = ($("#cbExcelTable").is(":checked")) ? "table": "normal";
-      var filename = $("#tbFilename").val();
-      var author = $("#tbAuthor").val();
-      var excel = new ExcelGen({
-        "src": tbl2Exprt,
-        "show_header": true,
-        "type": isTbl,
-        "file_name": filename,
-        "author": author
-      });
-      excel.generate();
-    })
-  } else {
-    $("#content").html("No tables found.");
-  }
+// Inform the background page that 
+// this tab should have a page-action
+chrome.runtime.sendMessage({
+    from:    'content',
+    subject: 'showPageAction'
+  });
   
-}
+  // Listen for messages from the popup
+  chrome.runtime.onMessage.addListener(function (msg, sender, response) {
+    // First, validate the message's structure
+    if (msg.from === 'popup') {
+      switch(msg.subject) {
+        case "loadTables":
+          var tables = [];
+          var counter = 1;
+          $("table:visible").each(function() {
+              var name = "Table " + counter;
+              $(this).attr("__EXCEL_TABLE_NAME__", name);
+              var id = counter++;
+              var html = this.outerHTML;
+              var table = {
+                "id": id,
+                "name": name,
+                "html": html
+              };
+              tables.push(table);
+          });
+          var tableInfo = {
+            "tables": tables
+          };
+      
+          response(tableInfo);
+          break;
+        case "highlight":
+          var tbl = $("[__EXCEL_TABLE_NAME__='" + msg.tableName + "']");
+          switch (msg.onoff)
+          {
+            case "on":
+              tbl.attr("__EXCEL_TABLE_ORIG_BORDER__", (tbl.css("border")) ? tbl.css("border") : "0px solid black");
+              tbl.css("border","5px solid green");
+              $('html, body').stop().animate({
+                scrollTop: (tbl.offset().top)
+              },500);
+              break;
+            case "off":
+              tbl.css("border", tbl.attr("__EXCEL_TABLE_ORIG_BORDER__"));
+              break;
+          }
+          
+          break;
+      }
+ 
 
-function highlightTable(tableName, onoff) {
-  console.log("highlight " + tableName + " " + onoff);
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (tabs) {
-    chrome.tabs.sendMessage(
-      tabs[0].id,
-      {from: 'popup', subject: 'highlight', tableName: tableName, onoff: onoff},
-      null
-    )
+    }
   });
-};
 
-function loadTables(tab) {
-  chrome.tabs.sendMessage(
-    tab.id,
-    {from: 'popup', subject: 'loadTables'},
-    setTableInfo);
-};
-
-// Once the DOM is ready...
-window.addEventListener('DOMContentLoaded', function () {
-  // ...query for the active tab...
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (tabs) {
-    // ...and send a request for the DOM info...
-    loadTables(tabs[0]);
-  });
-});
