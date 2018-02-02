@@ -1,5 +1,5 @@
 <p align="center">
- <img width="467px" height="115" alt="chrome-excel-generator" src="https://i.imgur.com/KWp5Akf.png"/> 
+ <img width="255px" height="254" alt="chrome-excel-generator" src="https://i.imgur.com/KWp5Akf.png"/> 
 </p>
 <p align="center"> 
 <b>A Chrome Extension for creating Excel Spreadsheets from HTML Tables</b>
