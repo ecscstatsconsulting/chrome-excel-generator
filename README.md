@@ -1,6 +1,6 @@
 <p align="center">
  <!--<img width="255px" height="254" alt="chrome-excel-generator" src="https://i.imgur.com/KWp5Akf.png"/> -->
- <img width="128px" height="127" alt="chrome-excel-generator" src="https://i.imgur.com/wdg2nX4.png"/>
+ <img width="129px" height="128" alt="chrome-excel-generator" src="https://i.imgur.com/wdg2nX4.png"/>
 </p>
 <p align="center"> 
 <b>A Chrome Extension for creating Excel Spreadsheets from HTML Tables</b>
