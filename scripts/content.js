@@ -13,7 +13,7 @@ chrome.runtime.sendMessage({
         case "loadTables":
           var tables = [];
           var counter = 1;
-          $("table").each(function() {
+          $("table:visible").each(function() {
               var name = "Table " + counter;
               $(this).attr("__EXCEL_TABLE_NAME__", name);
               var id = counter++;
