@@ -3,6 +3,14 @@ body {
     font-family: arial;
 }
 
+label {
+    font-weight: bold;
+}
+
+legend {
+    font-weight: bold;
+}
+
 li {
     cursor: pointer;
 }
