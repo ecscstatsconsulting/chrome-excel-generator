@@ -17,3 +17,18 @@ li {
 li:hover {
     background-color: yellow;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+   
+  li {
+    font: 200 14px/1.5 Arial;
+    border-bottom: 1px solid #ccc;
+  }
+   
+  li:last-child {
+    border: none;
+  }

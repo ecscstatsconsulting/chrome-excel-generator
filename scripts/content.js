@@ -39,7 +39,7 @@ chrome.runtime.sendMessage({
               tbl.attr("__EXCEL_TABLE_ORIG_BORDER__", (tbl.css("border")) ? tbl.css("border") : "0px solid black");
               tbl.css("border","5px solid green");
               $('html, body').stop().animate({
-                scrollTop: (tbl.offset().top)
+                scrollTop: (tbl.offset().top - 50)
               },500);
               break;
             case "off":
