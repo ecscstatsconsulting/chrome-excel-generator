@@ -1,4 +1,8 @@
-/* CSS file placeholder. */
+
+body {
+    font-family: arial;
+}
+
 li {
     cursor: pointer;
 }

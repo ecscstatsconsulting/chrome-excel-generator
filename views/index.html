@@ -2,17 +2,14 @@
 <html>
 <head>
   <title>ExcelGenerator</title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body style="width: 200px;">
-  <h1>Excel Generator</h1>
-  <hr/>
-  Options:
-  <hr/>
-  <div>
+  <h2>Excel Generator</h2>
+  <fieldset>
+    <legend>Options</legend>
     <div>
       <label for="cbExcelTable">Create table in Excel:</label> <input type="checkbox" checked id="cbExcelTable"/>
     </div>
@@ -22,11 +19,12 @@
     <div>
         <label for="tbAuthor">Author:</label> <input type="text" id="tbAuthor" value="chrome-excel-generator"/>
     </div>
-  </div>
-  <hr/>
-  Choose Table:
-  <hr/>
-  <div id="content"></div>
+  </fieldset>
+  <fieldset>
+    <legend>Choose Table</legend>
+    <div id="content"></div>
+  </fieldset>
+  
   <script src="/scripts/external/jquery-1.8.2.js"></script>
   <script src="/scripts/external/jszip.min.js"></script>
   <script src="/scripts/external/FileSaver.js"></script>
