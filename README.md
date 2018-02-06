@@ -10,7 +10,7 @@ Uses the [js-excel-generator](https://github.com/ecscstatsconsulting/js-excel-ge
 
 The app is published on the Chrome App Store here: [Chrome App](https://chrome.google.com/webstore/detail/excel-generator/ppeejofkpebeikjaalhlmlmhldkhbgih)
 
-It works well for basic tables.  Soon it will be upgraded to handle more complex instances.
+It works well for basic tables.  Soon it will be upgraded to handle more complex layouts.
 
 Feel free to look at the code now and try it out.  Lot's of updates and a formal release will be coming very soon.
 
