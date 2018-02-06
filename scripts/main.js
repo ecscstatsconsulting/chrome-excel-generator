@@ -78,6 +78,7 @@ function setTableInfo(info) {
         "type": "table"
       });
       excel.generate();
+      _gaq.push(['_trackEvent', "Generate Excel", "Clicked"]);
     })
   } else {
     $("#content").html("No tables found.");
