@@ -11,12 +11,15 @@
   <fieldset>
     <legend>Options</legend>
     <div style="margin-bottom: 5px">
+      <label>Format</label></label><input type="radio" name="format" id="r1" value="xlsx" checked /><label for="r1">XLSX</label> <input type="radio" name="format" id="r2" value="csv" /><label for="r2">CSV</label>
+    </div>
+    <div id="excelTblField" style="margin-bottom: 5px">
       <label for="cbExcelTable">Create table in Excel:</label> <input type="checkbox" checked id="cbExcelTable"/>
     </div>
     <div style="margin-bottom: 5px">
         <label for="tbFilename">Filename:</label> <input type="text" id="tbFilename" value="output.xlsx"/>
     </div>
-    <div>
+    <div id="authorField">
         <label for="tbAuthor">Author:</label> <input type="text" id="tbAuthor" value="chrome-excel-generator"/>
     </div>
   </fieldset>

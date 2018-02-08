@@ -67,13 +67,33 @@ function setTableInfo(info) {
       }
     );
     
+    $("input[type='radio']").click(function() {
+      var val = $(this).val();
+      var tb = $("#tbFilename");
+      if (val === "xlsx") {
+        $("#excelTblField").show();
+        $("#authorField").show();
+        if (tb.val().endsWith(".csv")) tb.val(tb.val().replace(/\.csv$/,".xlsx"));
+      } else {
+        $("#excelTblField").hide();
+        $("#authorField").hide();
+        if (tb.val().endsWith(".xlsx")) tb.val(tb.val().replace(/\.xlsx$/,".csv"));
+      }
+    })
+
     //Create Excel spreadsheet on clicking
     $("#content ul li").click(function () {
       var tbl_name = $(this).text();
       var tbl = info.tables.find((itm) => itm.name == tbl_name);
       var tbl2Exprt = $(tbl.html);
+      var format = $("input:radio[name='format']:checked").val()
+      var filename = $("#tbFilename").val();
+      var author = $("#tbAuthor").val();
       var excel = new ExcelGen({
         "src": tbl2Exprt,
+        "file_name": filename,
+        "author": author,
+        "format": format,
         "show_header": true,
         "type": "table"
       });
